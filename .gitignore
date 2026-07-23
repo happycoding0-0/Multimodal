@@ -1,1 +1,4 @@
 /.venv/
+/data/
+/models/runs
+/models/yolo26n.pt
