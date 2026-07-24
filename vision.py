@@ -1,6 +1,2 @@
+from ultralytics import YOLO
 
-
-# import 
-
-# def Listen():
-    
