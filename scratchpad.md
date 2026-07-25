@@ -11,7 +11,7 @@ Vision,Audio(STT,TTS),Thinking(LLM) 3가지 기능을 기존 모델들을 사용
 2026/07/23 - Vision 기능을 YOLO26모델로 구현해보겠습니다.
 > YOLO26 models are pretrained on COCO dataset(COCO = Common Objects in Context). YOLO26 모델들은 COCO 데이터셋을 기반으로 사전학습 되었습니다. (COCO = 생활 속 흔한 객체)
 
-
+2026/07/25 - 카메라를 opencv 라이브러리를 사용하여 제어하는것이 아닌 라이브러리없이 하는 방식을 구현해보는것을 계획중
 
 
 
