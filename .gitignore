@@ -2,3 +2,4 @@
 /data/
 /models/runs
 /models/yolo26n.pt
+/python/__pycache__
