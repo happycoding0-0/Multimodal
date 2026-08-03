@@ -4,22 +4,32 @@ vision.py의 단일 역할: 카메라 처리
 
 '''
 import cv2 as cv
-
-cap = cv.VideoCapture(0)
-
-if not cap.isOpened():
-    print("Cannot open camera")
-    exit()
-
-
-ret, frame = cap.read()
-if not ret:
-    print("Can't receive frame")
-    exit()
-frame = cv.cvtColor(frame,cv.COLOR_BGR2RGB)
-cap.release()
-
 from models import model
+class Cam():
+    def __init__(self):
+        self.ret = None
+        self.frame = None
+        self.cap = cv.VideoCapture(0)
+        
+        if not self.cap.isOpened():
+            print("Cannot open camera")
+            exit()
+        
 
-models = model.AI()
-models.vision(data = frame)
+    def cam(self):
+        self.ret, self.frame = self.cap.read()
+        if not self.ret:
+            print("Can't receive frame")
+            exit()
+        self.frame = cv.cvtColor(self.frame,cv.COLOR_BGR2RGB)
+        self.cap.release()
+        # models = model.AI()
+        # models.vision(data = frame)
+        return self.frame
+
+# (.venv) PS C:\AI\multimodal\python> python main.py              
+# Traceback (most recent call last):
+#   File "C:\AI\multimodal\python\main.py", line 7, in <module>
+#     frame = Cam.cam()
+#             ^^^^^^^^^
+# TypeError: Cam.cam() missing 1 required positional argument: 'self'
