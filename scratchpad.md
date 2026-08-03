@@ -21,6 +21,19 @@ Vision,Audio(STT,TTS),Thinking(LLM) 3가지 기능을 기존 모델들을 사용
 현재 사람처럼 보고 듣고 말하는 멀티모달 인공지능을 만들고싶다는생각이 들었으며 , 좀 더 간단한 두가지 기능으로 더 단순화했고 내가 눈을 감고 앞이 보이지않는 상태에서 걸어다닐수도있는 정도의 보조도 할수있도록 만들고싶다는 아이디어가 떠올랐다. 이 아이디어는 밤에 불을 끈 상태에서 야맹증때문인지 앞이 안보여서 세게 부딫힌적이있었는데 시각장애인은 매일이런 느낌이지않을까라는 생각이들었었던적이있어서 이게 아이디어를 만든 원인중 하나라고생각한다
 
 
+
+----
+라즈베리파이 제로 W 5MP 카메라 모듈 [RBP-CAM-003]
+이미지 센서: OV5647, 1/4형 5MP 컬러 CMOS
+최대 해상도 : 2592x1944 픽셀
+동영상 해상도: 1080p30, 720p60, 640×480p60/90
+화각(FOV): 약 65°
+인터페이스 : 22핀 CSI 카메라 인터페이스(Zero/Zero W 전용)
+지원 보드 : Raspberry Pi Zero, Zero W, Zero WH (Zero 2 W 포함 22핀 CSI 사용 보드)
+https://smartstore.naver.com/smartfocus/products/9501287880?nl-au=83cda1b4cf2740f6ac386bf89206dde9&NaPm=ct%3Dmscfenwd%7Cci%3Dcheckout%7Ctr%3Dssai_myc%7Ctrx%3Dnull%7Chk%3Dd3d8504ced2c2fc1c7b1e450ac9d635374bf814a
+
+
+
 ---
 참고 자료
 https://docs.ultralytics.com/datasets/detect/coco#coco-dataset
