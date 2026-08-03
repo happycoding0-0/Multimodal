@@ -1,5 +1,6 @@
 /.venv/
 /data/
-/models/runs
+python/models/runs
 /models/yolo26n.pt
 /python/__pycache__
+/python/models/__pycache__

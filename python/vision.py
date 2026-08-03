@@ -1,36 +1,31 @@
-from ultralytics import YOLO
-import cv2
-from speech import speech
-#import matplotlib.pyplot as plt
+'''
+vision.py의 단일 역할: 카메라 처리
+카메라 -> vision 모델 -> 예측 결과
+'''
+import cv2 as cv
+
+cap = cv.VideoCapture(0)
+
+if not cap.isOpened():
+    print("Cannot open camera")
+    exit()
 
 
-model = YOLO(model ="../models/yolo26n.pt")
-cap = cv2.VideoCapture(0)
-
-while True:
-    ret, frame = cap.read() # ret is bool(0 or 1) , frame is latest caputer videoframe
-    if not ret:
-        break
-    frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-    result = model.predict(source = frame, verbose= False)
-    for r in result:
-        print(r.verbose())
-    break
-
+ret, frame = cap.read()
+if not ret:
+    print("Can't receive frame")
+    exit()
+frame = cv.cvtColor(frame,cv.COLOR_BGR2RGB)
 cap.release()
+from models import model
+
+models = model.AI()
+models.vision(data = frame)
 
 
 
- # verbose 는 기본 출력 켜기 True 끄기 False
-# for r in result:
-    
-#     print(r.verbose())
-    # class_id  = r.boxes.cls.int().tolist()
-    # if len(class_id) > 0: # 아무 객체를 인식하지 못했을때 오류 발생(Traceback (most recent call last): IndexError: list index out of range)
 
-    #     name = r.names[class_id[0]]
-    #     print(name)
-    #     speech("i can see "+name)
+
 
 
 
