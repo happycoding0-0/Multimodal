@@ -4,3 +4,6 @@ python/models/runs
 /models/yolo26n.pt
 /python/__pycache__
 /python/models/__pycache__
+
+__pycache__
+runs
