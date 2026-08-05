@@ -1,3 +1,5 @@
+# src\sense\model.py
+
 from ultralytics import YOLO
 
 class Perception(): 
