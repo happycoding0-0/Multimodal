@@ -9,8 +9,22 @@ from sense.speech import talk
 cam = Eye()
 ai = Perception()
 speech = talk()
+
 frame = cam.cam()
+#frame = Eye.cam()
+#frame = Eye().cam()
+
 detect_result = ai.vision(frame)
-print(detect_result)
+#detect_result = Perception.vision(frame)
+#detect_result = Perception().vision(frame)
+
 speech.speech(detect_result)
+#talk.speech(detect_result)
+#talk().speech(detect_result)
+
+#frame2 = Eye().cam()
+frame2 = cam.cam()
+
+print(detect_result)
+
 
