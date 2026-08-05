@@ -1,17 +1,30 @@
 from ultralytics import YOLO
 
-class AI():
+class Perception(): 
+    """
+        #### Perception: Visual Perception, Auditory Perception
+    """
     def __init__(self): 
-        
-        self.vm = YOLO("./models/yolo26n.pt") # vm= vision model
+        """
+
+            vm: vision model
+        """
+        self.vm = YOLO("./sense/models/yolo26n.pt") # vm= vision model
 
     def vision(self,data):
-        
+        """
+            #### return: " (count) (object name) ," -> 1 person ,
+        """
         result = self.vm(source=data,verbose = False)
 
-        print(result[0].verbose())
+        return result[0].verbose()
 
 
 
+class Generation():
+    """
+        Generation: Speech
+    """
+    pass
         
 

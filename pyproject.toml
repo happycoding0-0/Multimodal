@@ -1,0 +1,12 @@
+
+
+
+pip
+    ultralytics
+    opencv-python
+
+pip(raspberrypi Os Error: Storage full)
+    opencv-python
+    torch torchvision --index-url https://download.pytorch.org/whl/cpu
+    --no-deps ultralytics
+
