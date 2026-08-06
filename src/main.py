@@ -8,13 +8,14 @@ from sense.speech import talk
 
 cam = Eye()
 ai = Perception()
-speech = talk()
+#speech = talk()
 
 frame = cam.cam()
 # frame = Eye.cam()
 # frame = Eye().cam()
 result = ai.vision(frame)
-speech.speech(result) 
+print(result)
+talk().speech(result) 
 
 # detect_result = ai.vision(frame)
 # #detect_result = Perception.vision(frame)
@@ -26,9 +27,10 @@ speech.speech(result)
 
 # #frame2 = Eye().cam()
 frame2 = cam.cam()
-print(frame2)
-result_ = ai.vision(frame2)
-speech.speech(result_) 
+
+result = ai.vision(frame2)
+print(result)
+talk().speech(result) 
 # print(detect_result)
 
 cam.cap.release()
