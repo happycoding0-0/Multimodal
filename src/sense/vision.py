@@ -17,12 +17,13 @@ class Eye():
         
 
     def cam(self):
+        
         self.ret, self.frame = self.cap.read()
         if not self.ret:
             print("Can't receive frame")
             exit()
         self.frame = cv.cvtColor(self.frame,cv.COLOR_BGR2RGB)
-        self.cap.release()
+        # self.cap.release()
     
         return self.frame
 

@@ -11,20 +11,25 @@ ai = Perception()
 speech = talk()
 
 frame = cam.cam()
-#frame = Eye.cam()
-#frame = Eye().cam()
+# frame = Eye.cam()
+# frame = Eye().cam()
+result = ai.vision(frame)
+speech.speech(result) 
 
-detect_result = ai.vision(frame)
-#detect_result = Perception.vision(frame)
-#detect_result = Perception().vision(frame)
+# detect_result = ai.vision(frame)
+# #detect_result = Perception.vision(frame)
+# #detect_result = Perception().vision(frame)
 
-speech.speech(detect_result)
-#talk.speech(detect_result)
-#talk().speech(detect_result)
+# speech.speech(detect_result)
+# #talk.speech(detect_result)
+# #talk().speech(detect_result)
 
-#frame2 = Eye().cam()
+# #frame2 = Eye().cam()
 frame2 = cam.cam()
+print(frame2)
+result_ = ai.vision(frame2)
+speech.speech(result_) 
+# print(detect_result)
 
-print(detect_result)
-
+cam.cap.release()
 
