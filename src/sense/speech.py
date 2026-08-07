@@ -1,20 +1,15 @@
 # src\sense\speech.py
 
-import pyttsx3 as tts
-import time
-class talk():
-    def __init__(self):
-        
-        self.engine = tts.init()
-        
-    def speech(self,text):
-        #self.engine = tts.init()
-        #self.engine = tts.init()
-        self.engine.say(text)
-        self.engine.runAndWait()
-        self.engine.stop()
+# import kokoro as ko
+# import sounddevice as sd
 
+# class talk():
+#     def __init__(self):
+        
+        
+        
+#     def speech(self,text):
+        
 
-if __name__ == "__main__":
-    talk().speech("첫번째")
-    talk().speech("두번째")
+# if __name__ == "__main__":
+    

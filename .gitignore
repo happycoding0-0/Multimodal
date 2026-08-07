@@ -7,3 +7,5 @@ python/models/runs
 
 __pycache__
 runs
+
+src/sense/models/

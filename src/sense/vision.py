@@ -1,7 +1,7 @@
 # src\sense\vision.py
 
 import cv2 as cv
-# from model import Perception
+from model import Perception
 class Eye():
     """
     vision.py의 단일 역할: 카메라 처리
@@ -29,3 +29,16 @@ class Eye():
 
     def rasp_cam(self):
         pass
+
+
+if __name__ =="__main__":
+    from model import Perception
+    cam = Eye()
+    vs = Perception()
+    
+    frame=  cam.cam()
+    print(vs.vision(frame))
+
+    
+
+
