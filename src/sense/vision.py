@@ -1,7 +1,7 @@
 # src\sense\vision.py
 
 import cv2 as cv
-from model import Perception
+from sense.model import Perception
 class Eye():
     """
     vision.py의 단일 역할: 카메라 처리
@@ -33,11 +33,16 @@ class Eye():
 
 if __name__ =="__main__":
     from model import Perception
+    from speech import talk
     cam = Eye()
     vs = Perception()
+    speech = talk()
+    
     
     frame=  cam.cam()
-    print(vs.vision(frame))
+    detected = vs.vision(frame)
+    speech.speech(detected)
+    # print(vs.vision(frame))
 
     
 
