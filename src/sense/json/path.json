@@ -1,4 +1,5 @@
 {
+  "model_download_root":"models/",
   "yolo_model": "models/yolo26n.pt",
   "kokoro_model": "models/kokoro-v1_0.pth",
   "kokoro_config": "json/kokoro_config.json",

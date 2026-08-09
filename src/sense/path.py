@@ -11,6 +11,7 @@ with open(path_json, "r", encoding="utf-8") as f:
     # print(path_)
 
 
+model_download_root = str(SENSE_DIR /  path_["model_download_root"])
 # path : vision model 
 yolo_model = str(SENSE_DIR / path_["yolo_model"]) 
 
