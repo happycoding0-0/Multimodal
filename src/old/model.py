@@ -1,4 +1,4 @@
-# src\sense\model.py
+
 
 from ultralytics import YOLO
 import json

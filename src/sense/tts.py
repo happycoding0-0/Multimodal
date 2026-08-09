@@ -1,4 +1,4 @@
-# src\sense\speech.py
+
 
 from kokoro import KModel, KPipeline
 import sounddevice as sd

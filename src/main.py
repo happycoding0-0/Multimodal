@@ -1,4 +1,4 @@
-#src\main.py
+
 
 # import openwakeword
 # from openwakeword.model import Model
