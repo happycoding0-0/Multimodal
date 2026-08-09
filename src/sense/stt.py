@@ -9,10 +9,11 @@ from openwakeword.model import Model
 class Stt():
     def __init__(self):
         self.SAMPLE_RATE = 16000
+        self.CHUNK_SIZE = 1280 
         
         self.stt_model = whisper.load_model(name = "small", download_root=model_download_root, in_memory=True)
 
-        openwakeword.utils.download_models(target_directory=f"{model_download_root}/openwakeword_models")
+        #openwakeword.utils.download_models(target_directory=f"{model_download_root}/openwakeword_models")
         self.wakeword_model = Model(
             wakeword_models=[f"{model_download_root}/openwakeword_models/hey_jarvis_v0.1.onnx"],
             melspec_model_path=f"{model_download_root}/openwakeword_models/melspectrogram.onnx",
@@ -21,8 +22,20 @@ class Stt():
             )
 
     def wake_word(self):
+        with sd.InputStream(samplerate=self.SAMPLE_RATE , channels= 1, dtype='int16') as stream:
+            print("Listening...")
+            while True:
+                audio_chunk, _ = stream.read(self.CHUNK_SIZE)
+                audio_chunk =audio_chunk.flatten()
+                self.prediction = self.wakeword_model.predict(audio_chunk)
+
+                for wake_word, score in self.prediction.items():
+
+                    if score >=0.5:
+                        print(wake_word, score)
+                        
+                        return self.stt()
         
-        self.prediction = self.wakeword_model.predict(audio)
         
     def get_audio(self,duration = 5):
         print("recording...")
@@ -35,6 +48,7 @@ class Stt():
         sd.wait()
         print("end recording")
         return self.audio.flatten()
+
     def stt(self):
         audio = self.get_audio(duration= 5)
 
@@ -47,6 +61,7 @@ class Stt():
 
 if __name__ == "__main__":
     stt = Stt()
+    stt.wake_word()
     #print(f"{model_download_root}/openwakeword_models/hey_jarvis_v0.1.onnx")
 
     
