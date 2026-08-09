@@ -1,0 +1,14 @@
+{
+  "yolo_model": "models/yolo26n.pt",
+  "kokoro_model": "models/kokoro-v1_0.pth",
+  "kokoro_config": "json/kokoro_config.json",
+  "kokoro_voice_model": {
+    "bm_george" : "models/voices/bm_george.pt",
+    "bm_daniel": "models/voices/bm_daniel.pt",
+    "bm_fable": "models/voices/bm_fable.pt",
+    "bm_lewis": "models/voices/bm_lewis.pt",
+    "bf_alice": "models/voices/bf_alice.pt",
+    "bf_emma": "models/voices/bf_emma.pt",
+    "af_heart": "models/voices/af_heart.pt"
+    }
+}

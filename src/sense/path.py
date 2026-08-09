@@ -4,7 +4,7 @@ from pathlib import Path
 SENSE_DIR = Path(__file__).resolve().parent
 
 
-path_json = str(SENSE_DIR / "models/path.json")
+path_json = str(SENSE_DIR / "json/path.json")
 
 with open(path_json, "r", encoding="utf-8") as f:
     path_ = json.load(f)
