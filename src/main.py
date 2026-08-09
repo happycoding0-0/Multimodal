@@ -3,13 +3,13 @@
 # import openwakeword
 # from openwakeword.model import Model
 from sense.vision  import Vision
-from sense.speech import Voice
+from sense.tts import Tts
 
 vs = Vision()
-vo = Voice()
+tts = Tts()
 
 frame = vs.cam()
 detected = vs.vision(frame)
-vo.speech(detected)
+tts.speak(detected)
 
 

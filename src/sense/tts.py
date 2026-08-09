@@ -4,14 +4,14 @@ from kokoro import KModel, KPipeline
 import sounddevice as sd
 from sense.path import kokoro_model, kokoro_config ,af_heart
 
-class Voice():
+class Tts():
     
     def __init__(self):
         self.model = KModel(config=kokoro_config, model=kokoro_model)
         self.pipeline = KPipeline(lang_code="b", model=self.model)
         
         
-    def speech(self,text):
+    def speak(self,text):
         generator = self.pipeline(text,voice=af_heart)
         for gs,ps,audio in generator:
             print(gs,ps,audio)
@@ -19,6 +19,6 @@ class Voice():
         sd.wait()
         
 if __name__ == "__main__":
-    speech = Voice()
-    speech.speech("This is first")
-    speech.speech("This is second")
+    speech = Tts()
+    speech.speak("This is first")  
+    speech.speak("This is second")
