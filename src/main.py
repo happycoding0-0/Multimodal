@@ -2,16 +2,14 @@
 
 # import openwakeword
 # from openwakeword.model import Model
-from sense.vision  import Eye
-from sense.model import Perception
-from sense.speech import talk
+from sense.vision  import Vision
+from sense.speech import Voice
 
-cam = Eye()
-model = Perception()
-speech = talk()
+vs = Vision()
+vo = Voice()
 
-frame = cam.cam()
-detected = model.vision(frame)
-speech.speech(detected)
+frame = vs.cam()
+detected = vs.vision(frame)
+vo.speech(detected)
 
 

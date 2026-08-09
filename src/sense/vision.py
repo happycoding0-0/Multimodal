@@ -1,49 +1,30 @@
-# src\sense\vision.py
-
-import cv2 as cv
-from sense.model import Perception
-class Eye():
-    """
-    vision.py의 단일 역할: 카메라 처리
-    """
+import cv2
+from ultralytics import YOLO
+from sense.path import yolo_model
+class Vision():
     def __init__(self):
-        self.ret = None
-        self.frame = None
-        self.cap = cv.VideoCapture(0)
-        
-        if not self.cap.isOpened():
-            print("Cannot open camera")
-            exit()
-        
+        self.cap = cv2.VideoCapture(0)
+        self.ret, self.frame = None,None
+
+        self.yolo_model = yolo_model
+        self.model = YOLO(model=yolo_model)
+
+    def __del__(self):
+        self.cap.release()
 
     def cam(self):
-        
-        self.ret, self.frame = self.cap.read()
-        if not self.ret:
-            print("Can't receive frame")
-            exit()
-        self.frame = cv.cvtColor(self.frame,cv.COLOR_BGR2RGB)
-        # self.cap.release()
-    
+        self.ret , self.frame = self.cap.read()
+        self.frame = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB)
         return self.frame
 
-    def rasp_cam(self):
-        pass
+    def vision(self, frame):
+        self.detected = self.model(source=frame,verbose = False)
+        return self.detected[0].verbose()
 
+if __name__ == "__main__":
+    vs = Vision()
+    frame = vs.cam()
+    result = vs.vision(frame)
+    print(result)
 
-if __name__ =="__main__":
-    from model import Perception
-    from speech import talk
-    cam = Eye()
-    vs = Perception()
-    speech = talk()
-    
-    
-    frame=  cam.cam()
-    detected = vs.vision(frame)
-    speech.speech(detected)
-    # print(vs.vision(frame))
-
-    
-
-
+        
