@@ -17,14 +17,14 @@ class Vision():
         self.frame = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB)
         return self.frame
 
-    def vision(self, frame):
+    def count_and_name(self, frame):
         self.detected = self.model(source=frame,verbose = False)
         return self.detected[0].verbose()
 
 if __name__ == "__main__":
     vs = Vision()
     frame = vs.cam()
-    result = vs.vision(frame)
+    result = vs.count_and_name(frame)
     print(result)
 
         

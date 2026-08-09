@@ -2,7 +2,7 @@
 
 from kokoro import KModel, KPipeline
 import sounddevice as sd
-from sense.path import kokoro_model, kokoro_config ,af_heart
+from sense.path import kokoro_model, kokoro_config ,bm_daniel
 
 class Tts():
     
@@ -12,7 +12,7 @@ class Tts():
         
         
     def speak(self,text):
-        generator = self.pipeline(text,voice=af_heart)
+        generator = self.pipeline(text,voice=bm_daniel)
         for gs,ps,audio in generator:
             print(gs,ps,audio)
         sd.play(audio,samplerate=24000)
