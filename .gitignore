@@ -9,3 +9,5 @@ __pycache__
 runs
 
 src/sense/models/
+
+src/sense/test.py
