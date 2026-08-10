@@ -94,6 +94,7 @@ class Stt():
                 self.pred_q = self.audio_q.copy()
                 self.audio_q.clear()
                 
+                
             time.sleep(0.05)
 
     def run(self):
@@ -112,7 +113,7 @@ class Stt():
 if __name__ == "__main__":
     stt = Stt()
     stt.run()
-    threading.Event().wait()
+    # threading.Event().wait()
     #stt.wake_word()
     #print(f"{model_download_root}/openwakeword_models/hey_jarvis_v0.1.onnx")
 
