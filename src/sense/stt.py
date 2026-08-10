@@ -43,6 +43,7 @@ class Stt():
 
         self.listener = Listener(SAMPLE_RATE=16000)
         self.audio_q = list()
+        
 
     def wake_word(self):
         pass
@@ -90,9 +91,9 @@ class Stt():
             if len(self.audio_q) < 5:
                 continue
             else:
-                pred_q = self.audio_q.copy()
+                self.pred_q = self.audio_q.copy()
                 self.audio_q.clear()
-                print(pred_q)
+                
             time.sleep(0.05)
 
     def run(self):
@@ -100,13 +101,18 @@ class Stt():
         thread = threading.Thread(target=self.inference_loop,
                                     # args=(action,)
                                     daemon=True)
+        
         thread.start()
+        while True:
+            time.sleep(1)
+            print(self.audio_q)
 
     
 
 if __name__ == "__main__":
     stt = Stt()
     stt.run()
+    threading.Event().wait()
     #stt.wake_word()
     #print(f"{model_download_root}/openwakeword_models/hey_jarvis_v0.1.onnx")
 
