@@ -1,5 +1,5 @@
 
-import whisper
+#import whisper
 from path import model_download_root
 import sounddevice as sd
 import openwakeword 
@@ -9,31 +9,45 @@ import time
 import threading
 
 
+from faster_whisper import WhisperModel
+import numpy as np
+
+
+
+
 class Listener:
-    def __init__(self, SAMPLE_RATE = 16000):
-        self.SAMPLE_RATE = SAMPLE_RATE
+    def __init__(self):
+        self.SAMPLE_RATE =  16000
         self.CHUNK_SIZE = 1280
+        self.FORMAT = pyaudio.paInt16
         self.p = pyaudio.PyAudio()
-        self.stream = self.p.open(format = pyaudio.paInt16, channels= 1, rate = self.SAMPLE_RATE, input=True , output=True, frames_per_buffer=self.CHUNK_SIZE)
+        # self.stt = Stt()
+        self.stream = self.p.open(format = self.FORMAT, channels= 1, rate = self.SAMPLE_RATE, input=True , output=True, frames_per_buffer=self.CHUNK_SIZE)
 
-    def listen(self,queue):
+    def mic_data(self,queue):
         while True:
-            data = self.stream.read(self.CHUNK_SIZE, exception_on_overflow=False)
+            raw_data = self.stream.read(self.CHUNK_SIZE)
+            data = np.frombuffer(raw_data,dtype=np.int16)
             queue.append(data)
-            time.sleep(0.01)
+            # print(data)
+            # print(type(data))
+            # time.sleep(0.5)
+            time.sleep(0.05)
+            
 
-    def run(self, queue):
-        thread = threading.Thread(target= self.listen, args=(queue,),daemon=True)
-        thread.start()
-        print("Speech Recognition is now listening... \n")
 
 class Stt():
     def __init__(self):
+        self.is_running = True
         self.SAMPLE_RATE = 16000
         self.CHUNK_SIZE = 1280
-        self.stt_model = whisper.load_model(name = "small", download_root=model_download_root, in_memory=True)
+        self.mic_queue = []
+
+        # ----- openai-whisper ----- START
+        #self.stt_model = whisper.load_model(name = "small", download_root=model_download_root, in_memory=True)
         
-        #openwakeword.utils.download_models(target_directory=f"{model_download_root}/openwakeword_models")
+        
+        # openwakeword.utils.download_models(target_directory=f"{model_download_root}/openwakeword_models")
         self.wakeword_model = Model(
             wakeword_models=[f"{model_download_root}/openwakeword_models/hey_jarvis_v0.1.onnx"],
             melspec_model_path=f"{model_download_root}/openwakeword_models/melspectrogram.onnx",
@@ -41,12 +55,28 @@ class Stt():
             inference_framework="onnx"
             )
 
-        self.listener = Listener(SAMPLE_RATE=16000)
-        self.audio_q = list()
+        # ----- openai-whisper ----- END
         
+        # ----- faster-whisper ----- START
+        self.faster_whisper_model = WhisperModel("small",download_root= model_download_root,compute_type="int8")
+        # ----- faster-whisper ----- END
 
-    def wake_word(self):
-        pass
+    def wake_word(self,queue):
+            print("Wake Word is Listening...")
+            while True:
+                if  queue:
+                    data = queue.pop(0)
+                    #print(data)  
+                    self.prediction = self.wakeword_model.predict(data)
+                    for wake_word , score in self.prediction.items():
+                        if score >= 0.5:
+                            print(wake_word, score)
+                            return self.stt()
+                        #else:
+                            #print("failed: ",wake_word,float(score))
+                            
+                        
+            
         # 구버전
         # with sd.InputStream(samplerate=self.SAMPLE_RATE , channels= 1, dtype='int16') as stream:
         #     print("Listening...")
@@ -64,58 +94,70 @@ class Stt():
         #                 return  self.lisenter
         
         
-    # def get_audio(self,duration = 5):
-    #     print("recording...")
-    #     self.audio = sd.rec(
-    #         int(duration* self.SAMPLE_RATE),
-    #         samplerate=self.SAMPLE_RATE,
-    #         channels=1,
-    #         dtype="float32"
-    #                         )
-    #     sd.wait()
-    #     print("end recording")
-    #     return self.audio.flatten()
+
 
     def stt(self):
+        
         #audio = self.get_audio(duration= 5)
         
-        audio = whisper.pad_or_trim(audio)
-        mel = whisper.log_mel_spectrogram(audio, n_mels=self.stt_model.dims.n_mels).to(self.stt_model.device)
-        _, probs = self.stt_model.detect_language(mel)
-        options = whisper.DecodingOptions()
-        result = whisper.decode(self.stt_model, mel, options)
-        print(result.text)
-
-    def inference_loop(self):
-        while True:
-            if len(self.audio_q) < 5:
-                continue
-            else:
-                self.pred_q = self.audio_q.copy()
-                self.audio_q.clear()
-                
-                
-            time.sleep(0.05)
-
-    def run(self):
-        self.listener.run(self.audio_q)
-        thread = threading.Thread(target=self.inference_loop,
-                                    # args=(action,)
-                                    daemon=True)
         
-        thread.start()
-        while True:
-            time.sleep(1)
-            print(self.audio_q)
+        # #---- whisper START -----
+        
+        # audio = whisper.pad_or_trim(audio)
+        # mel = whisper.log_mel_spectrogram(audio, n_mels=self.stt_model.dims.n_mels).to(self.stt_model.device)
+        # _, probs = self.stt_model.detect_language(mel)
+        # options = whisper.DecodingOptions()
+        # result = whisper.decode(self.stt_model, mel, options)
+        # print(result.text)
+        
+        # #---- whisper END -----
+
+
+        # ---- faster-whisper START -----
+        #print(mic_queue)
+        #print(self.mic_queue)
+        time.sleep(10)
+        #print(self.mic_queue)
+        #print(type(self.mic_queue))
+        #print(np.ndarray(self.mic_queue).flatten())
+        #self.mic_queue = self.mic_queue[0:10]
+        #print(self.mic_queue)
+        # self.mic_queue = self.mic_queue[0:][0]
+        self.mic_queue = np.concatenate(self.mic_queue)
+        #print(self.mic_queue)
+        #time.sleep(1)
+        #print("STT:",self.mic_queue)
+        #segments , info = self.faster_whisper_model.transcribe(audio= mic_queue)
+        segments , info = self.faster_whisper_model.transcribe(audio= self.mic_queue)
+        for segment in segments:
+            print("STT: ","[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
+
+        # ---- faster-whisper END -----
+
+        
+        
+        
+        
+        
+        
+
+
+
 
     
 
 if __name__ == "__main__":
+    #mic_queue = []
+    listener = Listener()
     stt = Stt()
-    stt.run()
-    # threading.Event().wait()
-    #stt.wake_word()
-    #print(f"{model_download_root}/openwakeword_models/hey_jarvis_v0.1.onnx")
+    mic_queue = stt.mic_queue
+    t1 = threading.Thread(target=listener.mic_data, args=(mic_queue,), daemon=True)
+    t2 = threading.Thread(target=stt.wake_word, args=(mic_queue,), daemon=True)
+    t1.start()
+    t2.start()
 
+    while True:
+        time.sleep(0.05)
     
+
     
