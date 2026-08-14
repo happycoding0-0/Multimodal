@@ -11,5 +11,7 @@
     "bf_alice": "models/voices/bf_alice.pt",
     "bf_emma": "models/voices/bf_emma.pt",
     "af_heart": "models/voices/af_heart.pt"
-    }
+    },
+    "jarvis_model":"models/jarvis/jarvis-high.onnx",
+    "jarvis_json": "models/jarvis/jarvis-high.onnx.json"
 }

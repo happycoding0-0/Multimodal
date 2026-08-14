@@ -26,3 +26,6 @@ bm_lewis = str(SENSE_DIR/path_["kokoro_voice_model"]["bm_lewis"])
 bf_alice = str(SENSE_DIR/path_["kokoro_voice_model"]["bf_alice"])
 bf_emma = str(SENSE_DIR/path_["kokoro_voice_model"]["bf_emma"])
 af_heart = str(SENSE_DIR/path_["kokoro_voice_model"]["af_heart"])
+
+jarvis_model = str(SENSE_DIR/path_["jarvis_model"])
+jarvis_json = str(SENSE_DIR/path_["jarvis_json"])

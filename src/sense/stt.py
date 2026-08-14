@@ -8,19 +8,20 @@ from faster_whisper import WhisperModel
 from path import model_download_root
 import time
 
+import queue
 model = WhisperModel("base",download_root=model_download_root, compute_type="int8")
 
 p = pyaudio.PyAudio()
 stream = p.open(rate=16000,channels=1,format=pyaudio.paInt16, input=True,frames_per_buffer=1024)
 
-q = deque()
+q = queue.Queue()
 
-q_buffer = deque()
+q_buffer = queue.Queue()
 
 
 def mic(q):
     while True:
-        raw_data = stream.read(num_frames=1024)
+        raw_data = stream.read(num_frames=1)
         data = np.frombuffer(raw_data,dtype=np.int16)
         q.append(data)
         
@@ -52,6 +53,6 @@ def stt(q):
 if __name__ == "__main__":
     t = threading.Thread(target=mic, args=(q,),daemon=True)
     t.start()
-    time.sleep(0.1)
+    
     stt(q)
     stream.close()

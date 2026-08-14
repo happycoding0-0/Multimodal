@@ -11,3 +11,5 @@ runs
 src/sense/models/
 
 src/sense/test.py
+src/sense/test_py
+
