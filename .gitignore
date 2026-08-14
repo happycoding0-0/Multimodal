@@ -11,3 +11,11 @@ runs
 src/sense/models/
 
 src/sense/test.py
+
+*.wav
+
+temp.py
+
+
+
+multimodal.egg-info
