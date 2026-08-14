@@ -24,14 +24,9 @@ model = WhisperModel("base",download_root=model_download_root, compute_type="int
 p = pyaudio.PyAudio()
 stream = p.open(rate=16000,channels=1,format=pyaudio.paInt16, input=True,frames_per_buffer=1024)
 
-<<<<<<< HEAD
 q = queue.Queue()
 
 q_buffer = queue.Queue()
-=======
-q = deque()
-q_buffer = deque()
->>>>>>> b605fd73806b656bd03dc87ade8f973a52ab47a6
 
 def mic(q):
     while True:
