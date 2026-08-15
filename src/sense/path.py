@@ -29,3 +29,6 @@ af_heart = str(SENSE_DIR/path_["kokoro_voice_model"]["af_heart"])
 
 jarvis_model = str(SENSE_DIR/path_["jarvis_model"])
 jarvis_json = str(SENSE_DIR/path_["jarvis_json"])
+
+whisper_small = str(SENSE_DIR/path_["whisper-small"])
+Qwen_dir = str(SENSE_DIR/path_["Qwen-dir"])

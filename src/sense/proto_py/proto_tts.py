@@ -1,14 +1,5 @@
-
-import sys
-import os
-
-# 현재 파일의 상위 폴더 경로를 구해서 sys.path에 추가
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
-
 import onnxruntime as ort
-from path import jarvis_model,jarvis_json
+from sense.path import jarvis_model,jarvis_json
 import json
 
 # sess = ort.InferenceSession(jarvis_model)

@@ -1,8 +1,6 @@
 
 import time
 
-
-
 import threading 
 import queue
 import numpy as np
@@ -33,7 +31,7 @@ audio_queue = queue.Queue()
 
 # 모델 불러오기
 MODEL = "small" # tiny , small, base.. 등이있음
-model = WhisperModel(MODEL,device= "cpu", cpu_threads= WHISPER_THREADS, download_root=model_download_root,compute_type="int8") # 모델, 연산 장치(cpu,cuda[gpu]),CPU 상세 설정 ,다운로드 경로, 연산 타입
+model = WhisperModel(MODEL,device= "cpu", cpu_threads= WHISPER_THREADS, download_root=model_download_root + "/faster_whisper",compute_type="int8") # 모델, 연산 장치(cpu,cuda[gpu]),CPU 상세 설정 ,다운로드 경로, 연산 타입
 
 
 

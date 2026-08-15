@@ -1,17 +1,21 @@
 {
   "model_download_root":"models/",
-  "yolo_model": "models/yolo26n.pt",
-  "kokoro_model": "models/kokoro-v1_0.pth",
-  "kokoro_config": "json/kokoro_config.json",
+  "yolo_model": "models/yolo/yolo26n.pt",
+  "kokoro_model": "models/kokoro/kokoro-v1_0.pth",
+  "kokoro_config": "models/kokoro/kokoro_config.json",
   "kokoro_voice_model": {
-    "bm_george" : "models/voices/bm_george.pt",
-    "bm_daniel": "models/voices/bm_daniel.pt",
-    "bm_fable": "models/voices/bm_fable.pt",
-    "bm_lewis": "models/voices/bm_lewis.pt",
-    "bf_alice": "models/voices/bf_alice.pt",
-    "bf_emma": "models/voices/bf_emma.pt",
-    "af_heart": "models/voices/af_heart.pt"
+    "bm_george" : "models/kokoro/voices/bm_george.pt",
+    "bm_daniel": "models/kokoro/voices/bm_daniel.pt",
+    "bm_fable": "models/kokoro/voices/bm_fable.pt",
+    "bm_lewis": "models/kokoro/voices/bm_lewis.pt",
+    "bf_alice": "models/kokoro/voices/bf_alice.pt",
+    "bf_emma": "models/kokoro/voices/bf_emma.pt",
+    "af_heart": "models/kokoro/voices/af_heart.pt"
     },
     "jarvis_model":"models/jarvis/jarvis-high.onnx",
-    "jarvis_json": "models/jarvis/jarvis-high.onnx.json"
+    "jarvis_json": "models/jarvis/jarvis-high.onnx.json",
+    
+    "whisper-small": "models/whisper/small.pt",
+    "faster-whisper": "models/faster_whisper/",
+    "Qwen-dir": "models/Qwen"
 }
