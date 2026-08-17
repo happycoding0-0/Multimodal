@@ -17,5 +17,12 @@
     
     "whisper-small": "models/whisper/small.pt",
     "faster-whisper": "models/faster_whisper/",
-    "Qwen-dir": "models/Qwen"
+    
+    "Qwen-dir": {
+      "qwen3-0.6B": {
+        "dir":"models/qwen/Qwen3-0.6B",
+        "model": "",
+        "config": ""
+      }
+    }
 }
