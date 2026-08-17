@@ -7,7 +7,7 @@ import numpy as np
 
 import pyaudio
 from faster_whisper import WhisperModel
-from sense.path import model_download_root
+from sense.path import faster_whisper_small
 import re
 
 # 오디오 세팅
@@ -30,8 +30,8 @@ audio_queue = queue.Queue()
 
 
 # 모델 불러오기
-MODEL = "small" # tiny , small, base.. 등이있음
-model = WhisperModel(MODEL,device= "cpu", cpu_threads= WHISPER_THREADS, download_root=model_download_root + "/faster_whisper",compute_type="int8") # 모델, 연산 장치(cpu,cuda[gpu]),CPU 상세 설정 ,다운로드 경로, 연산 타입
+MODEL =  faster_whisper_small
+model = WhisperModel(MODEL,device= "cpu", cpu_threads= WHISPER_THREADS,compute_type="int8") # 모델, 연산 장치(cpu,cuda[gpu]),CPU 상세 설정 ,다운로드 경로, 연산 타입
 
 
 
@@ -70,7 +70,7 @@ def consumer_thread():
         audio_data_array: np.ndarray = np.frombuffer(audio_data,np.int16 ).astype(np.float32) /255.0
         segments , _ = model.transcribe(audio_data_array,
                                         language=WHISPER_LANGUAGE,
-                                        beam_size=5,
+                                        
                                         vad_filter=True,
                                         )
         segments = [s.text for s in segments]
@@ -88,8 +88,11 @@ if __name__ == "__main__":
     consumer = threading.Thread(target= consumer_thread,daemon=True)
     consumer.start()
 
-    try:
-        producer.join()
-        consumer.join()
-    except KeyboardInterrupt:
-        print("Exiting...")
+    while True:
+        try:
+            
+            producer.join()
+            consumer.join()
+        except KeyboardInterrupt:
+            print("Exiting...")
+            break
