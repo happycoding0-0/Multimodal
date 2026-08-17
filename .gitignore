@@ -1,23 +1,29 @@
 /.venv/
 /data/
 python/models/runs
-/models/yolo26n.pt
+# /models/yolo26n.pt
 /python/__pycache__
 /python/models/__pycache__
 
 __pycache__
 runs
 
-src/sense/models/
 
-src/sense/test.py
+#src/sense/models/
+
+
+
+
 
 *.wav
 
-temp.py
+src/sense/models/**/*
+!src/sense/models/**/.gitkeep
 
 
 
 multimodal.egg-info
 src/sense/test_py
 
+!src/sense/models/
+!src/sense/models/**/
