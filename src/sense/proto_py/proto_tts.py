@@ -6,15 +6,19 @@ import wave
 import soundfile as sf
 
 
-
 voice = PiperVoice.load(model_path=jarvis_model, config_path=jarvis_json)
+def tts(text):
+    
+    with wave.open("re.wav", "wb") as wav_file:
+        voice.synthesize_wav(text, wav_file)
+    data ,fs=  sf.read('re.wav') # fs=22050
+    sd.play(data,fs)
+    sd.wait()
 
-text = ""
+if __name__ == "__main__":
 
-with wave.open("re.wav", "wb") as wav_file:
-    voice.synthesize_wav(text, wav_file)
+    text = "good morning, sir"
+    tts(text)
 
-data ,fs=  sf.read('test.wav')
 
-sd.play(data,fs)
-sd.wait()
+
