@@ -12,8 +12,8 @@
     "bf_emma": "models/kokoro/voices/bf_emma.pt",
     "af_heart": "models/kokoro/voices/af_heart.pt"
     },
-    "jarvis_model":"models/jarvis/jarvis-high.onnx",
-    "jarvis_json": "models/jarvis/jarvis-high.onnx.json",
+    "jarvis_model":"models/jarvis/high/jarvis-high.onnx",
+    "jarvis_json": "models/jarvis/high/jarvis-high.onnx.json",
     
     "whisper-small": "models/whisper/small.pt",
     "faster-whisper-small": "models/faster_whisper/faster-whisper-small/",
@@ -23,6 +23,13 @@
         "dir":"models/qwen/Qwen3-0.6B",
         "model": "",
         "config": ""
+      }
+    },
+
+    "meta-llama":{
+      "meta-llama-3-8B":{
+        "dir":"models/meta_llama/Meta-Llama-3-8B",
+        "config":"models/meta_llama/Meta-Llama-3-8B/config.json"
       }
     }
 }

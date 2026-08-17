@@ -32,3 +32,7 @@ jarvis_json = str(SENSE_DIR/path_["jarvis_json"])
 
 faster_whisper_small = str(SENSE_DIR/path_["faster-whisper-small"])
 Qwen_dir = str(SENSE_DIR/path_["Qwen-dir"]["qwen3-0.6B"]["dir"])
+
+
+llama_3_8B = str(SENSE_DIR/path_["meta-llama"]["meta-llama-3-8B"]["dir"])
+llama_3_8B_config = str(SENSE_DIR/path_["meta-llama"]["meta-llama-3-8B"]["config"])
