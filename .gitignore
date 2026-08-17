@@ -19,6 +19,12 @@ runs
 
 src/sense/models/**/*
 !src/sense/models/**/.gitkeep
+!src/sense/models/**/.gitkeep
+!src/sense/models/qwen/README.md
+!src/sense/models/faster_whisper/README.md
+
+
+
 
 
 

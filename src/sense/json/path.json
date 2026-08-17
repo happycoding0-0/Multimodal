@@ -16,7 +16,7 @@
     "jarvis_json": "models/jarvis/jarvis-high.onnx.json",
     
     "whisper-small": "models/whisper/small.pt",
-    "faster-whisper": "models/faster_whisper/",
+    "faster-whisper-small": "models/faster_whisper/faster-whisper-small/",
     
     "Qwen-dir": {
       "qwen3-0.6B": {
