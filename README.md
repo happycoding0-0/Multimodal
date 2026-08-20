@@ -8,7 +8,7 @@
 
 
 ``` mermaid
-flowchartLR chained pipeline
+flowchart LR chained pipeline
 
 STT[STT] --> LLM[LLM] --> TTS[TTS]
 
