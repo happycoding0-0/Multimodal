@@ -17,8 +17,8 @@ tokenizer = transformers.AutoTokenizer.from_pretrained(
 )
 
 model = transformers.AutoModelForCausalLM.from_pretrained(
-    model_id,
-    config=llama_3_8B_config,         # Pass your specific sense config here
+    model_id, # 모델 ID 는 로드 하는데 쓰임
+    config=llama_3_8B_config,         # config 내부에 있는 데이터들은 AutoModelForCausalLM에 사용됨
     torch_dtype=torch.bfloat16,       # Best precision for Llama 3
     local_files_only=True
 )

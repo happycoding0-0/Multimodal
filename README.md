@@ -6,11 +6,24 @@
 ## what is multimodal?
 멀티모달은 다양한 형식의 데이터를 연산하여 결과값을 낼수있는 인공지능을 말합니다.
 
+핵심: 다양한 형식의 데이터 연산이 가능한가?
 
-```mermaid
-flowchart LR chained pipeline
-STT[STT] --> LLM[LLM] --> TTS[TTS]
 
+
+## Plan
+
+``` 
+chained pipeline
+[STT]  --> [LLM] --> [TTS] 
+
+[Mic] -bytes-> [Encoder] -array->  [STT] -array-> [Decoder] -text-> [Encoder] -array-> [LLM] -array-> [Decoder]  -text-> [Encoder] -array-> [TTS] -array-> -audio->  
+
+  
+
+[MultiModal Model]
+이미지 + 텍스트
+오디오 + 이미지
+ 
 ```
 
 
