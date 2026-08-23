@@ -13,7 +13,7 @@
 ## Plan
 
 ``` 
-chained pipeline
+chained pipeline (Current)
 [STT]  --> [LLM] --> [TTS] 
 
 [Mic] -bytes-> [Encoder] -array->  [STT] -array-> [Decoder] -text-> [Encoder] -array-> [LLM] -array-> [Decoder]  -text-> [Encoder] -array-> [TTS] -array-> -audio->  
@@ -29,6 +29,13 @@ chained pipeline
 [Phsyical computing]
 self-awareness : "arm 움직여봐" -> [arm  접속가능여부 탐색]-> [if True: 동작  else: "아직 움직일수없습니다" ]
 ```
+
+## Todo(할 일)
+- 오디오 데이터 누적 방식 재설계
+
+
+
+
 
 
 
