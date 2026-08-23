@@ -23,7 +23,11 @@ chained pipeline
 [MultiModal Model]
 이미지 + 텍스트
 오디오 + 이미지
- 
+
+
+
+[Phsyical computing]
+self-awareness : "arm 움직여봐" -> [arm  접속가능여부 탐색]-> [if True: 동작  else: "아직 움직일수없습니다" ]
 ```
 
 
