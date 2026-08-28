@@ -13,7 +13,7 @@
 ## Plan
 
 ``` 
-chained pipeline (Current)
+chained pipeline (Current) - it's not multimodal
 [STT]  --> [LLM] --> [TTS] 
 
 [Mic] -bytes-> [Encoder] -array->  [STT] -array-> [Decoder] -text-> [Encoder] -array-> [LLM] -array-> [Decoder]  -text-> [Encoder] -array-> [TTS] -array-> -audio->  
