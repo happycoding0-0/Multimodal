@@ -121,13 +121,13 @@ def vad_thread():
         if is_speaking and not was_speaking:  # 발화 시작 감지
             # 말하고있고 시작 이력이 존재하지않을때 발화시작 출력
             print("voice detected")
-            stt_q += audio_int16
+            
 
 
         elif is_speaking and was_speaking:# 발화 유지
             # 발화감지 True 및 발화시작이력이 True면 -> 오디오 누적
             print("stateful")
-            stt_q += audio_int16
+            
 
             
 
@@ -135,7 +135,7 @@ def vad_thread():
             #발화감지  False 및 발화시작이력이 True 면 -> 발화가 끝남 -> 오디오 누적 종료 -> stt 변환 -> 변환결과 -> LLM 
             # 발화 끝 적용
             print("end of speech")
-            stt_q += audio_int16
+            
             
 
         else : # 발화 시작이 아님 감지 
