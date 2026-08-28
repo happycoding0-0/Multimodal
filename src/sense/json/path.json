@@ -31,5 +31,6 @@
         "dir":"models/meta_llama/Meta-Llama-3-8B",
         "config":"models/meta_llama/Meta-Llama-3-8B/config.json"
       }
-    }
+    },
+    "VAD": "models/VAD"
 }
