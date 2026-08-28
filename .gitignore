@@ -33,3 +33,5 @@ src/sense/test_py
 
 !src/sense/models/
 !src/sense/models/**/
+
+test.py
