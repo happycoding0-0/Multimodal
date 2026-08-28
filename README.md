@@ -25,9 +25,12 @@ chained pipeline (Current)
 오디오 + 이미지
 
 
+[VAD]
+지금 감지된 음성의 청자가 AI 자신인지 판단해야한다. <- 단순 파형 분석 그 이상
+
 
 [Phsyical computing]
-self-awareness : "arm 움직여봐" -> [arm  접속가능여부 탐색] [제어 가능 여부 탐색] -> [if True: 동작  else: "아직 움직일수없습니다" ]
+self-awareness : "arm 움직여봐" -> [arm  접속가능여부 탐색]-> [if True: 동작  else: "아직 움직일수없습니다" ]
 ```
 
 ## Todo(할 일)
