@@ -31,6 +31,13 @@ chained pipeline (Current) - it's not multimodal
 
 [Phsyical computing]
 self-awareness : "arm 움직여봐" -> [arm  접속가능여부 탐색]-> [if True: 동작  else: "아직 움직일수없습니다" ]
+
+- AI가 각종 제어 가능한 대상을 탐색(사용자 입력에 맞는 대상등등)
+- 제어가능한 대상을 이해 (무엇을 어떻게 할수있는지등등)
+- 제어가능한 대상을  전기신호로 제어 할수있도록 설계
+
+human -> code -> control(servo, robot....)
+AI -> 0,1(Electronic,raw) -> control(servo, robot....)
 ```
 
 ## Todo(할 일)
