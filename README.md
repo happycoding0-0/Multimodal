@@ -1,6 +1,7 @@
 # Multimodal 프로젝트
 > **작성자(Author):** 이지우 (Jeewoo Lee)
 
+## 로컬 AI 시스템(플러그인 방식)
 인간처럼 보고, 듣고, 말하는 기능부터 실제 현실세계에서 물리적 기능을 수행하는 인공지능을 구현하는 프로젝트입니다.
 
 Project Vision : initiative to realize embodied AI that interacts physically with the real world, expanding from core human-like modalities such as sight, sound, and speech.
