@@ -2,9 +2,13 @@
 > **작성자(Author):** 이지우 (Jeewoo Lee)
 
 ## 로컬 AI 시스템(플러그인 방식)
+
+
+### 프로젝트 비전
 인간처럼 보고, 듣고, 말하는 기능부터 실제 현실세계에서 물리적 기능을 수행하는 인공지능을 구현하는 프로젝트입니다.
 
-Project Vision : initiative to realize embodied AI that interacts physically with the real world, expanding from core human-like modalities such as sight, sound, and speech.
+### Project Vision
+initiative to realize embodied AI that interacts physically with the real world, expanding from core human-like modalities such as sight, sound, and speech.
 
 ( 'Embodied AI' is the technical term for AI that interacts with the physical world, like robots).
 
@@ -25,14 +29,17 @@ chained pipeline (Current) - it's not multimodal
 
   
 
-[MultiModal Model]
-이미지 + 텍스트
-오디오 + 이미지
 
 
 [VAD]
 지금 감지된 음성의 청자가 AI 자신인지 판단해야한다. <- 단순 파형 분석 그 이상
 
+
+
+[GUI]
+plugin panel -> model selection
+
+[MultiModal Model]
 
 [Phsyical computing]
 self-awareness : "arm 움직여봐" -> [arm  접속가능여부 탐색]-> [if True: 동작  else: "아직 움직일수없습니다" ]
