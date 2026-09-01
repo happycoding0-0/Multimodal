@@ -1,41 +1,37 @@
 import sys
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QPixmap
+from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import (
     QApplication,
-    QCheckBox,
-    QComboBox,
-    QDial,
-    QDoubleSpinBox,
     QLabel,
-    QLineEdit,
-    QListWidget,
     QMainWindow,
-    QSlider,
-    QSpinBox,
+    QVBoxLayout,
+    QWidget,
 )
 
+app = QApplication(sys.argv)
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
+window = QMainWindow()
+window.setFixedSize(500, 500)
+window.setWindowTitle("Plug-in Panel")
 
-        
-        
-        self.setWindowTitle("Plugin Panel")
-        
-        label = QLabel("Plugin Panel")
-        font = label.font()
-        font.setPointSize(24)
-        label.setFont(font)
-        label.setStyleSheet("""padding: 10px;""") 
-        label.setAlignment(
-            Qt,Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft
-        )
-
-        self.setCentralWidget()
-
-        
+container = QWidget()
+layout = QVBoxLayout(container)
+layout.setContentsMargins(25, 25, 25, 25) # 좌, 상, 우, 하 여백
+layout.setSpacing(0)
+widget_title = QLabel("Plug-in Panel")
+widget_title.setFont(QFont("Arial", 24))
 
 
+widget_des = QLabel("Select Model")
+widget_des.setFont(QFont("Arial", 14))
 
+
+layout.addWidget(widget_title)
+layout.addWidget(widget_des)
+#layout.addStretch() 
+
+
+window.setCentralWidget(container)
+window.show()
+sys.exit(app.exec())
