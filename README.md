@@ -18,6 +18,21 @@ initiative to realize embodied AI that interacts physically with the real world,
 핵심: 다양한 형식의 데이터 연산이 가능한가?
 
 
+## Now
+### STT flowchart
+<img width="9435" height="1713" alt="이슈2" src="https://github.com/user-attachments/assets/c9eafd0c-82cf-4a5d-9252-f0b7739207ef" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Plan
 
