@@ -1,6 +1,9 @@
 # Multimodal 프로젝트
 > **작성자(Author):** 이지우 (Jeewoo Lee)
+## what is multimodal?
+멀티모달은 다양한 형식의 데이터를 연산하여 결과값을 낼수있는 인공지능을 말합니다.
 
+핵심: 다양한 형식의 데이터 연산이 가능한가?
 ## 로컬 AI 시스템(플러그인 방식)
 
 
@@ -11,11 +14,6 @@
 initiative to realize embodied AI that interacts physically with the real world, expanding from core human-like modalities such as sight, sound, and speech.
 
 ( 'Embodied AI' is the technical term for AI that interacts with the physical world, like robots).
-
-## what is multimodal?
-멀티모달은 다양한 형식의 데이터를 연산하여 결과값을 낼수있는 인공지능을 말합니다.
-
-핵심: 다양한 형식의 데이터 연산이 가능한가?
 
 
 ## Now
