@@ -27,9 +27,7 @@ WHISPER_THREADS = 4 # 모델이 사용할 cpu 코어(스레드) 개수
 # 시각화 (터미널에 출력되는 텍스트)
 MAX_SENTENCE_CHARACTERS = 80
 
-# queue: 모든 1초 길이의 오디오 청크가 담겨짐
-# audio_queue = queue.Queue()
-# length_queue = queue.Queue(maxsize=LENGTH_IN_SEC)
+
 
 # STT 모델 불러오기
 MODEL =  faster_whisper_small
@@ -43,13 +41,14 @@ vad_model, utils = torch.hub.load(repo_or_dir='snakers4/silero-vad',model='siler
 
 condition = threading.Condition()
 # 마이크 입력 데이터 저장할 큐
-## mic_q = queue.Queue()
+
 vad_q = queue.Queue()
 stt_q = queue.Queue()
-#data = np.ndarray(dtype=np.float32)
+
 data = []
 def mic_thread():
     """
+    마이크 입력 수집
     ### mic input data producer
     raw(bytes) -> variable(memory) (ex. vad_q & stt_q)
     only read and put
@@ -64,10 +63,10 @@ def mic_thread():
     stream = p.open(rate=16000,channels=1,format=pyaudio.paInt16,input=True,frames_per_buffer=1024)
     while True:
         vad_raw = stream.read(512)
-        # stt_raw = stream.read(1080)
+
+
         vad_q.put(vad_raw)
 
-        #stt_q.put(raw)
 
 
 
@@ -78,6 +77,7 @@ def stop():
 
 def validate(model, inputs: torch.Tensor,sr: int = 16000):
     """ 
+
     Helper Method: validate()
     torch.no_grad() -> Prevent OOM (Out of Memory) & Speed up computation
     메모리 누수 방지 & 처리 속도 증가
@@ -89,6 +89,7 @@ def validate(model, inputs: torch.Tensor,sr: int = 16000):
 
 def int2float(sound):
     """ 
+    정수를 소수로
     Helper Method: int2float()
     
     int -> float
@@ -103,10 +104,13 @@ def int2float(sound):
     return sound
 
 def vad_thread():
+        """
         
+         """
         global continue_recording
-        continue_recording = True
         global data
+        continue_recording = True
+        
         was_speaking = False # 발화 시작 이력 저장
         while continue_recording: 
             with condition:
@@ -121,39 +125,22 @@ def vad_thread():
                 is_speaking = new_confidence > 0.5 # VAD 판단 결과가 0.5이상이면 "말하고 있다"로 상태 변환
 
                 if is_speaking and not was_speaking:  # 발화 시작 감지
-                    # 말하고있고 시작 이력이 존재하지않을때 발화시작 출력
                     data = []
-                    print("voice detected")
+                    #print("voice detected")
                     data.append(audio_float32)
 
 
                 elif is_speaking and was_speaking:# 발화 유지
-                    # 발화감지 True 및 발화시작이력이 True면 -> 오디오 누적
                     #print("stateful")
                     data.append(audio_float32)
 
-
-
-
-
                 elif not is_speaking and was_speaking: # 발화 끝 감지
-                    #발화감지  False 및 발화시작이력이 True 면 -> 발화가 끝남 -> 오디오 누적 종료 -> stt 변환 -> 변환결과 -> LLM 
-                    # 발화 끝 적용
-                    print("end of speech")
-
+                   # print("end of speech")
                     data.append(audio_float32)
                     data = np.concatenate(data)
-                    wake_stt = True
-                    #print(data.ndim,data.shape)
                     condition.notify()
 
-
-
-
-
                 else : # 발화 시작이 아님 감지 
-                    # not is_speaking and not was_speaking 
-                    # 발화감지 False 및 발화시작이력이 False 면 -> 변환 대상이 아님으로 간주 -> 오디오 삭제(현재 (지연발생없는 이상적인 경우 , 현재 요소만 있다고 가정) vad_q 요소 제거)
                     #print("None")
                     pass
 
