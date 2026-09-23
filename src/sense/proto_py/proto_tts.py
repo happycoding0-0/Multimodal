@@ -12,7 +12,7 @@ def tts(text):
     a = voice.phonemize(text)
     b = voice.phonemes_to_ids(a)
     c = voice.phoneme_ids_to_audio(b)
-    print(a)
+    print(a)    
     print(b)
     print(c)
 

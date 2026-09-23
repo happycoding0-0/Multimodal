@@ -28,7 +28,6 @@ WHISPER_THREADS = 4 # 모델이 사용할 cpu 코어(스레드) 개수
 MAX_SENTENCE_CHARACTERS = 80
 
 
-
 # STT 모델 불러오기
 MODEL =  faster_whisper_small
 model = WhisperModel('small',download_root= MODEL,device= "cuda",compute_type="int8") # 모델, 연산 장치(cpu,cuda[gpu]),CPU 상세 설정 ,다운로드 경로, 연산 타입
@@ -44,8 +43,8 @@ condition = threading.Condition()
 
 vad_q = queue.Queue()
 stt_q = queue.Queue()
-
 data = []
+
 def mic_thread():
     """
     마이크 입력 수집
@@ -112,6 +111,7 @@ def vad_thread():
         continue_recording = True
         
         was_speaking = False # 발화 시작 이력 저장
+        
         while continue_recording: 
             with condition:
                 audio_int16 = np.frombuffer(vad_q.get(), np.int16); # bytes -> int16
